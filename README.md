@@ -33,6 +33,10 @@ To generate a privacy policy for your nonprofit:
 3. Follow the step-by-step wizard to input your organization's information
 4. Review your generated policy and upload it to your website
 
+### For Developers
+
+This is a static site with no build step and no backend. To run it locally, clone the repo and open `index.html` directly in your browser, or serve the folder with any static file server.
+
 ## 🛠️ Technology Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
