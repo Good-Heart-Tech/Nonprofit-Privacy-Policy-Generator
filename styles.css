@@ -2,17 +2,23 @@
    Base Styles and Variables
    ========================================================================== */
 :root {
-    --primary-color: #7189FF;
-    --primary-hover: #586CD0;
-    --success-color: #4caf50;
-    --success-hover: #3d8b40;
-    --dark-bg: #121218;
-    --card-bg: #1e2029;
-    --input-bg: #2a2d3e;
-    --border-color: #3a3f58;
-    --text-color: #e6e6e6;
-    --text-muted: #a0a0a0;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --primary-color: var(--ght-palette-primary);
+    --primary-hover: var(--ght-palette-hudu-primary);
+    --link-color: var(--ght-palette-hudu-primary);
+    --success-color: #17653A;
+    --success-bg: #E6F5EB;
+    --danger-color: #9B1C1C;
+    --danger-bg: #FDECEC;
+    --dark-bg: var(--ght-palette-white);
+    --card-bg: var(--ght-palette-white);
+    --input-bg: var(--ght-palette-white);
+    --wash-bg: color-mix(in srgb, var(--ght-palette-hudu-light) 30%, white);
+    --border-color: var(--ght-palette-hudu-light);
+    --input-border: var(--ght-palette-hudu-primary);
+    --text-color: var(--ght-palette-charcoal);
+    --text-muted: var(--ght-palette-charcoal);
+    --heading-color: var(--ght-palette-rich-black);
+    --shadow: 0 2px 8px rgba(9, 29, 32, 0.08);
     --transition: all 0.3s ease;
 }
 
@@ -23,8 +29,11 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--ght-font-family-body);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: var(--text-color);
     background-color: var(--dark-bg);
 }
@@ -40,7 +49,7 @@ body {
 .header {
     background-color: var(--card-bg);
     padding: 20px 30px;
-    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border-color);
     text-align: center;
 }
 
@@ -64,7 +73,7 @@ body {
 .header h1 {
     font-size: 1.8rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--heading-color);
     margin: 0;
 }
 
@@ -83,13 +92,14 @@ body {
 
 .header-pattern {
     height: 5px;
-    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    background: var(--primary-color);
 }
 
 /* ==========================================================================
    Main Content Styles
    ========================================================================== */
 .main-content {
+    width: 100%;
     max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
@@ -98,6 +108,7 @@ body {
 .wizard-container {
     background-color: var(--card-bg);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
     overflow: hidden;
 }
@@ -107,11 +118,11 @@ body {
    ========================================================================== */
 .info-bubble {
     display: flex;
-    background-color: rgba(113, 137, 255, 0.1);
+    background-color: var(--wash-bg);
     border-radius: 8px;
     padding: 15px;
     margin: 20px 0;
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid var(--link-color);
 }
 
 .info-bubble.small {
@@ -128,7 +139,7 @@ body {
 .info-icon {
     flex-shrink: 0;
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--link-color);
     margin-right: 15px;
     display: flex;
     align-items: center;
@@ -137,7 +148,7 @@ body {
 .info-bubble.small .info-icon {
     font-size: 1rem;
     margin-right: 0;
-    color: var(--primary-color);
+    color: var(--link-color);
     cursor: help;
 }
 
@@ -154,7 +165,7 @@ body {
     top: -10px;
     width: 280px;
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--link-color);
     border-radius: 4px;
     padding: 10px;
     font-size: 0.85rem;
@@ -168,8 +179,8 @@ body {
 /* Style links in info bubbles */
 .info-bubble a, 
 .info-bubble.small .info-content a {
-    color: var(--primary-color);
-    text-decoration: none;
+    color: var(--link-color);
+    text-decoration: underline;
 }
 
 .info-bubble a:hover, 
@@ -185,7 +196,7 @@ body {
     left: -6px;
     border-width: 6px 6px 6px 0;
     border-style: solid;
-    border-color: transparent var(--border-color) transparent transparent;
+    border-color: transparent var(--link-color) transparent transparent;
 }
 
 .info-bubble.small:hover .info-content {
@@ -205,7 +216,7 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 15px;
-    color: var(--text-color);
+    color: var(--heading-color);
 }
 
 .intro-section p {
@@ -220,9 +231,10 @@ body {
 .disclaimer-btn {
     display: inline-flex;
     align-items: center;
-    color: var(--primary-color);
-    background-color: rgba(113, 137, 255, 0.1);
-    text-decoration: none;
+    color: var(--link-color);
+    background-color: var(--wash-bg);
+    border: 1px solid var(--border-color);
+    text-decoration: underline;
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -231,8 +243,8 @@ body {
 }
 
 .disclaimer-btn:hover {
-    background-color: rgba(108, 156, 224, 0.3);
-    text-decoration: none;
+    background-color: var(--border-color);
+    text-decoration: underline;
 }
 
 .disclaimer-btn i {
@@ -264,7 +276,7 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    background: var(--primary-color);
     width: 20%; /* Will be updated by JS */
     transition: width 0.4s ease;
 }
@@ -285,16 +297,18 @@ body {
     justify-content: center;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--heading-color);
     transition: var(--transition);
 }
 
 .step.active {
     background-color: var(--primary-color);
+    color: var(--heading-color);
 }
 
 .step.completed {
     background-color: var(--success-color);
+    color: var(--ght-palette-white);
 }
 
 .progress-labels {
@@ -322,7 +336,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: var(--text-color);
+    color: var(--heading-color);
 }
 
 .question-text {
@@ -350,7 +364,7 @@ select {
     width: 100%;
     padding: 12px 15px;
     border-radius: 4px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--input-border);
     background-color: var(--input-bg);
     color: var(--text-color);
     font-size: 1rem;
@@ -361,14 +375,14 @@ input:focus,
 select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(108, 156, 224, 0.2);
+    box-shadow: 0 0 0 3px var(--ght-palette-hudu-light);
 }
 
 textarea {
     width: 100%;
     padding: 12px 15px;
     border-radius: 4px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--input-border);
     background-color: var(--input-bg);
     color: var(--text-color);
     font-size: 1rem;
@@ -381,7 +395,7 @@ textarea {
 textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(108, 156, 224, 0.2);
+    box-shadow: 0 0 0 3px var(--ght-palette-hudu-light);
 }
 
 /* Custom Checkboxes and Radio Buttons */
@@ -431,7 +445,7 @@ textarea:focus {
     height: 22px;
     width: 22px;
     background-color: var(--input-bg);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--input-border);
     transition: var(--transition);
 }
 
@@ -445,13 +459,13 @@ textarea:focus {
 
 .checkbox-label:hover input ~ .checkbox-custom,
 .radio-label:hover input ~ .radio-custom {
-    background-color: rgba(113, 137, 255, 0.1);
+    background-color: var(--wash-bg);
 }
 
 .checkbox-label input:checked ~ .checkbox-custom,
 .radio-label input:checked ~ .radio-custom {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--link-color);
+    border-color: var(--link-color);
 }
 
 .checkbox-custom:after,
@@ -509,123 +523,82 @@ textarea:focus {
 
 .next-btn {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--heading-color);
 }
 
 .next-btn:hover {
     background-color: var(--primary-hover);
+    color: var(--ght-palette-white);
 }
 
 .back-btn {
     background-color: transparent;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--input-border);
+    color: var(--link-color);
 }
 
 .back-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--wash-bg);
 }
 
 .generate-btn {
-    background-color: var(--success-color);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--heading-color);
 }
 
 .generate-btn:hover {
-    background-color: var(--success-hover);
+    background-color: var(--primary-hover);
+    color: var(--ght-palette-white);
+}
+
+.btn:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
 /* ==========================================================================
-   Footer Styles
+   Good Heart Tech standard footer
    ========================================================================== */
-.footer {
-    background-color: var(--card-bg);
-    padding: 30px 0;
-    margin-top: 60px;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    align-items: center;
-}
-
-.footer-logo {
-    text-align: left;
-}
-
-.footer-logo a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: var(--text-muted);
-}
-
-.footer-logo span {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.footer-logo .logo {
-    height: 30px;
-    width: auto;
-}
-
-.footer-copyright {
-    text-align: center;
-}
-
-.footer-links {
-    text-align: right;
-    white-space: nowrap;
-}
-
-.footer p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-.footer-links a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
+/* Good Heart Tech standard app footer, light mode. Uses the kit variables from ght-variables.css.
+   Donate button is white on huduPrimary (4.7:1), which passes AA for its small label. */
+.ght-footer { width: 100%; margin-top: auto; padding: 22px 24px 26px; text-align: center; background: color-mix(in srgb, var(--ght-palette-hudu-light) 30%, white); border-top: 1px solid var(--ght-palette-hudu-light); color: var(--ght-palette-charcoal); }
+.ght-footer-note { max-width: 52rem; margin: 0 auto 16px; font-size: .8125rem; font-style: italic; }
+.ght-footer-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.ght-footer-logo img { display: block; height: 30px; width: auto; }
+.ght-footer-copy { font-size: .9375rem; }
+.ght-footer-donate { display: inline-flex; line-height: 1.2; align-items: center; gap: 8px; padding: 9px 22px; border-radius: 8px; background: var(--ght-palette-hudu-primary); color: var(--ght-palette-white); font-weight: var(--ght-font-weight-semibold); text-decoration: none; }
+.ght-footer-donate:hover { background: var(--ght-palette-rich-black); color: var(--ght-palette-white); }
+.ght-footer-github { display: inline-flex; color: var(--ght-palette-rich-black); }
+.ght-footer-github:hover { color: var(--ght-palette-hudu-primary); }
+.ght-footer a:focus-visible { outline: 3px solid var(--ght-palette-primary); outline-offset: 3px; }
 
 /* ==========================================================================
    Validation Styles
    ========================================================================== */
 .required {
-    color: #ff6b6b;
+    color: var(--danger-color);
     font-weight: bold;
     margin-left: 3px;
 }
 
 .validation-message {
-    color: #ff6b6b;
+    color: var(--danger-color);
     font-size: 0.9rem;
     margin-top: 5px;
     display: none;
 }
 
 input:invalid {
-    border-color: #ff6b6b;
+    border-color: var(--danger-color);
 }
 
 input:valid {
-    border-color: var(--border-color);
+    border-color: var(--input-border);
 }
 
 input:placeholder-shown {
-    border-color: var(--border-color);
+    border-color: var(--input-border);
 }
 
 .checkbox-label input:disabled ~ .checkbox-custom {
@@ -643,7 +616,7 @@ input:placeholder-shown {
    Navigation and Back Button Styles
    ========================================================================== */
 .back-home {
-    color: var(--text-color);
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -651,17 +624,18 @@ input:placeholder-shown {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-color);
-    text-decoration: none;
+    color: var(--link-color);
+    text-decoration: underline;
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 0.9rem;
     transition: var(--transition);
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--wash-bg);
+    border: 1px solid var(--border-color);
 }
 
 .back-btn-header:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--border-color);
 }
 
 .back-btn-header i {
@@ -678,9 +652,9 @@ input:placeholder-shown {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border: none;
+    background-color: var(--wash-bg);
+    color: var(--link-color);
+    border: 1px solid var(--input-border);
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
@@ -689,7 +663,7 @@ input:placeholder-shown {
 }
 
 .toggle-wizard-btn:hover {
-    background-color: var(--input-bg);
+    background-color: var(--border-color);
 }
 
 /* ==========================================================================
@@ -699,11 +673,12 @@ input:placeholder-shown {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 30px;
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
 }
 
 .success-message {
-    background-color: rgba(76, 175, 80, 0.1);
+    background-color: var(--success-bg);
     color: var(--success-color);
     padding: 15px;
     border-radius: 4px;
@@ -726,7 +701,7 @@ input:placeholder-shown {
 
 .copy-btn {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--heading-color);
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -739,6 +714,7 @@ input:placeholder-shown {
 
 .copy-btn:hover {
     background-color: var(--primary-hover);
+    color: var(--ght-palette-white);
 }
 
 .policy-content-container {
@@ -748,6 +724,7 @@ input:placeholder-shown {
     padding: 0;
     background-color: white;
     color: black;
+    border: 1px solid var(--border-color);
     margin-top: 20px;
 }
 
@@ -816,23 +793,6 @@ input:placeholder-shown {
 /* ==========================================================================
    Responsive Styles
    ========================================================================== */
-@media (max-width: 992px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .footer-logo, .footer-copyright, .footer-links {
-        text-align: center;
-    }
-    
-    .footer-logo a {
-        flex-direction: column;
-        justify-content: center;
-    }
-}
-
 @media (max-width: 768px) {
     .header h1 {
         font-size: 1.5rem;

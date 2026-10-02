@@ -1,7 +1,7 @@
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('ght-year').textContent = new Date().getFullYear();
     
     // Initialize form navigation
     initializeFormNavigation();
